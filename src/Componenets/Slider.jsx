@@ -60,7 +60,7 @@ export default function Slider() {
       <div className='flex flex-col-reverse gap-y-6 lg:flex-row items-center justify-around w-full h-full  px-16  bg-gray-900/70'>
         <div className='max-w-lg'>
           <h1 className='text-3xl font-semibold text-white lg:text-4xl'>
-          Find  with <span className='text-[#34878f] font-logo'> Better </span>
+          Find  <span className='text-[#34878f] font-logo'> Better </span>
           Solutions <br /> for your problem</h1>
           <Link to={'/queries'} className='btn bg-[#3e939b] text-white px-4 mt-6 hover:bg-[#224d51] duration-300 border-none shadow-xl'>Queries</Link>
         </div>

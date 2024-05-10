@@ -8,6 +8,7 @@ import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import PrivateRoutes from "./PrivateRoutes";
 import MyQueries from "../pages/MyQueries";
+import AddQueries from "../pages/AddQueries";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -29,6 +30,12 @@ import MyQueries from "../pages/MyQueries";
             path: '/myQueries',
             element:<PrivateRoutes>
               <MyQueries></MyQueries>
+            </PrivateRoutes>,
+        },
+        {
+            path: '/addQueries',
+            element:<PrivateRoutes>
+              <AddQueries></AddQueries>
             </PrivateRoutes>,
         },
 
