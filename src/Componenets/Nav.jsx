@@ -8,7 +8,7 @@ const Nav = () => {
     <NavLink><li><a>Queries</a></li></NavLink>
     <NavLink><li><a>Recommendations for me</a></li></NavLink>
     <NavLink><li><a>My Queries</a></li></NavLink>
-    <NavLink><li><a>My Recommendations</a></li></NavLink>
+    <NavLink><li><a className="">My Recommendations</a></li></NavLink>
     
         </>
     const loadedTheme = localStorage.getItem('theme')
@@ -39,7 +39,7 @@ const Nav = () => {
         }
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    <Link className= {`btn btn-ghost text-2xl  hover:bg-transparent   font-logo ${theme === 'dark' ? "text-[#a7c4cd]": 'text-[#64a3aa]'} duration-700`}>AultLy</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -50,11 +50,11 @@ const Nav = () => {
   </div>
   <div className="navbar-end flex gap-4">
   <input onChange={handleTheme} defaultChecked={loadedTheme === 'dark'? true: false} type="checkbox" value="synthwave"  className="toggle theme-controller bg-amber-300 border-sky-400 [--tglbg:theme(colors.sky.500)] checked:bg-blue-300 checked:border-blue-800 checked:[--tglbg:theme(colors.blue.900)] row-start-1 col-start-1 col-span-2"/>
-  <Link to={'/login'} href="#_" className="relative inline-flex items-center justify-center py-2 px-7  overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-purple-400 rounded-full shadow-md group">
-<span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-purple-400 group-hover:translate-x-0 ease">
+  <Link to={'/login'} href="#_" className="relative inline-flex items-center justify-center py-2 px-7  overflow-hidden font-medium text-[#65a5ac] transition duration-300 ease-out border-2 border-[#7ba0ab] rounded-full shadow-md group">
+<span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-[#7ba0ab] group-hover:translate-x-0 ease">
 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path  d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
 </span>
-<span className="absolute flex items-center justify-center w-full h-full text-purple-400 transition-all duration-300 transform group-hover:translate-x-full ease">Login</span>
+<span className="absolute flex items-center justify-center w-full h-full tp transition-all duration-300 transform group-hover:translate-x-full ease">Login</span>
 <span className="relative invisible">Login</span>
 </Link>
   </div>

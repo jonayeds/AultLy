@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.font-logo{
+    font-family: "Lobster Two", sans-serif;
+}
+
+.ts{
+    color: #C4DEE5;
+}
+.tp{
+    color: #65A5AC;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
