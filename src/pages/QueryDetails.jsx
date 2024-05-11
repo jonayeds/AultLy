@@ -22,8 +22,8 @@ const navigate = useNavigate()
     
     
     // console.log(query)
-    const {title, recommendationCount, image, displayName, name, brand,photoURL , currentDate, details, _id} = query
-    // console.log(query)
+    const {title, recommendationCount, image, displayName, name, brand,photoURL , currentDate, details, _id, email} = query
+    console.log(query)
     const queryId = _id
     const handleRecommendation = e =>{
         if(!recommender){
@@ -37,7 +37,7 @@ const navigate = useNavigate()
         const recommendationReason = form.details.value
         const recommendationName = form.name.value
         
-        const recommendation = {recommendationImage, recommendationName, recommendationReason,recommendationTitle, queryId , title, displayName, photoURL,recommendationDate, recommenderEmail, recommenderName }
+        const recommendation = {recommendationImage, recommendationName, recommendationReason,recommendationTitle, queryId , title, displayName, photoURL,recommendationDate, email, recommenderEmail, recommenderName, name }
         fetch('http://localhost:5000/recommendations', {
             method: 'POST',
             headers: {
@@ -82,7 +82,7 @@ const navigate = useNavigate()
             console.log(data)
             setRecommendations(data)
         })
-    },[])
+    },[queryId])
     return (
         <div>
             <div className="p-5 mx-auto sm:p-10 md:p-16 ">
