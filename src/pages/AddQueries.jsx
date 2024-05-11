@@ -1,10 +1,16 @@
 import useAuth from "../custom hooks/useAuth";
-
+import Swal from "sweetalert2";
 const AddQueries = () => {
     const {auth} = useAuth()
     const user = auth.currentUser
     const {displayName, email, photoURL} = user
     const time = Date.now()
+	const date = new Date()
+	let day = date.getDate();
+const month = date.getMonth() + 1;
+const year = date.getFullYear();
+const currentDate = `${day}-${month}-${year}`;
+console.log("date",currentDate); 
   
     // console.log(displayName, email, photoURL)
     const handleAddQuery = e =>{
@@ -15,7 +21,7 @@ const AddQueries = () => {
         const brand = form.brand.value
         const details = form.details.value
         const title = form.title.value
-        const query = {name, image, brand, details, title, displayName, email,  photoURL, recommendationCount: 0, time}
+        const query = {name, image, brand, details, title, displayName, email,  photoURL, recommendationCount: 0, time, currentDate}
         console.log(query)
         fetch('http://localhost:5000/queries', {
             method: 'POST',
@@ -25,8 +31,14 @@ const AddQueries = () => {
             body: JSON.stringify(query)
         })
         .then(res=>res.json())
-        .then(data=>{
-            console.log(data)
+        .then(()=>{
+            Swal.fire({
+				title: 'Successful',
+				text: 'Successfully added Query',
+				icon: 'success',
+				confirmButtonText: 'OK'
+			})
+			form.reset()
         })
         
     }
