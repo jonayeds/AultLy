@@ -10,6 +10,8 @@ import AddQueries from "../pages/AddQueries";
 import Queries from "../pages/Queries";
 import QueryDetails from "../pages/QueryDetails";
 import MyRecommendations from "../pages/MyRecommendations";
+import RecommendationsForMe from "../pages/RecommendationsForMe";
+import UpdateQuery from "../pages/UpdateQuery";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -52,6 +54,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/recommendationsForMe",
+        element: (
+          <PrivateRoutes>
+            <RecommendationsForMe></RecommendationsForMe>
+          </PrivateRoutes>
+        ),
+      },
+      {
         path: "/queries",
         element: <Queries></Queries>,
         loader: ()=> fetch(`https://aultly-server.vercel.app/queries`)
@@ -59,6 +69,11 @@ const router = createBrowserRouter([
       {
         path: "/queryDetails/:id",
         element: <QueryDetails></QueryDetails>,
+        loader: ({params})=> fetch(`https://aultly-server.vercel.app/queryDetails/${params.id}`)
+      },
+      {
+        path: "/update/:id",
+        element: <UpdateQuery></UpdateQuery>,
         loader: ({params})=> fetch(`https://aultly-server.vercel.app/queryDetails/${params.id}`)
       },
     ],

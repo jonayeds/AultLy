@@ -9,7 +9,7 @@ const Nav = () => {
     const navigation = <>
     <NavLink className={({isActive})=> isActive? 'text-[#3e939b] hover:scale-110 duration-200 ': 'hover:scale-110 duration-200'} to={'/'}><li><a>Home</a></li></NavLink>
     <NavLink to={'/queries'} className={({isActive})=> isActive? 'text-[#3e939b] hover:scale-110 duration-200 ': 'hover:scale-110 duration-200'}><li><a>Queries</a></li></NavLink>
-    { user && <NavLink to={'/recommendations'} className={({isActive})=> isActive? 'text-[#3e939b] hover:scale-110 duration-200 ': 'hover:scale-110 duration-200'}  ><li><a>Recommendations for me</a></li></NavLink> }
+    { user && <NavLink to={'/recommendationsForMe'} className={({isActive})=> isActive? 'text-[#3e939b] hover:scale-110 duration-200 ': 'hover:scale-110 duration-200'}  ><li><a>Recommendations for me</a></li></NavLink> }
     { user && <NavLink to={'/myQueries'} className={({isActive})=> isActive? 'text-[#3e939b] hover:scale-110 duration-200 ': 'hover:scale-110 duration-200'}><li><a>My Queries</a></li></NavLink> }
     { user && <NavLink className={({isActive})=> isActive? 'text-[#3e939b] hover:scale-110 duration-200 ': 'hover:scale-110 duration-200'} to={'/myRecommendations'}><li><a>My Recommendations</a></li></NavLink> }
     
