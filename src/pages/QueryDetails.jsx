@@ -65,8 +65,11 @@ const navigate = useNavigate()
                         "content-type" : "application/json"
                     },
                     body: JSON.stringify(query)
+                }).then(res=> res.json())
+                .then(data=>{
+                    console.log(data)
+                    window.location.reload()
                 })
-            // window.location.reload()
         })
             }
             

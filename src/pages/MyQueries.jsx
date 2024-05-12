@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useAuth from "../custom hooks/useAuth";
 import { Link } from "react-router-dom";
-
+import Swal from "sweetalert2";
 const MyQueries = () => {
     const {auth} = useAuth()
     const [queries, setQueries] = useState([])
@@ -25,7 +25,29 @@ const MyQueries = () => {
             return 0
         }
     })
+    
     console.log("sorted ",sortedQueries)
+    const handleDelete = id =>{
+        Swal.fire({
+            title: 'Are You Sure?',
+            text: 'Delete this item',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+            confirmButtonColor: 'red',
+            cancelButtonText: 'Cancel',
+        }).then(result =>{
+            if(result.isConfirmed){
+                fetch(`https://aultly-server.vercel.app/queries/${id}`, {
+                    method: 'DELETE'
+                }).then(res=> res.json())
+                .then(data=>{
+                    console.log(data)
+                    setQueries(queries.filter(query=> query._id !== id))
+                })
+            }
+        })
+    }
 
     return (
         <div>
@@ -47,7 +69,7 @@ const MyQueries = () => {
                 <div className="flex space-y-3 flex-col ">
                     <Link to={`/queryDetails/${query._id}`} className="btn bg-[#136d75] text-white">View Details</Link>
                     <Link to={`/update/${query._id}`} className="btn text-white bg-[#5c989d]">Update</Link>
-                    <button className="btn bg-red-500 text-white">Delete</button>
+                    <button onClick={()=>handleDelete(query._id)} className="btn bg-red-500 text-white">Delete</button>
                 </div>
             </div>)}
             </div>
@@ -60,5 +82,6 @@ const MyQueries = () => {
         </div>
     );
 };
+
 
 export default MyQueries;
