@@ -7,7 +7,7 @@ const MyQueries = () => {
     const [queries, setQueries] = useState([])
     const user = auth.currentUser
     useState(()=>{
-        fetch(`http://localhost:5000/queries/${user?.email}`)
+        fetch(`https://aultly-server.vercel.app/queries/${user?.email}`)
     .then(res=> res.json())
     .then(data =>{
         console.log(data)

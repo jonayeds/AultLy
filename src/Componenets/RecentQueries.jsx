@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const RecentQueries = () => {
     const [queries, setQueries] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/queries')
+        fetch(`https://aultly-server.vercel.app/queries`)
         .then(res=> res.json())
         .then(data =>{
             setQueries(data)

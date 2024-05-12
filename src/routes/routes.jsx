@@ -54,12 +54,12 @@ const router = createBrowserRouter([
       {
         path: "/queries",
         element: <Queries></Queries>,
-        loader: ()=> fetch('http://localhost:5000/queries')
+        loader: ()=> fetch(`https://aultly-server.vercel.app/queries`)
       },
       {
         path: "/queryDetails/:id",
         element: <QueryDetails></QueryDetails>,
-        loader: ({params})=> fetch(`http://localhost:5000/queryDetails/${params.id}`)
+        loader: ({params})=> fetch(`https://aultly-server.vercel.app/queryDetails/${params.id}`)
       },
     ],
   },

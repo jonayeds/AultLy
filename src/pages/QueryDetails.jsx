@@ -22,7 +22,7 @@ const navigate = useNavigate()
     
     
     // console.log(query)
-    const {title, recommendationCount, image, displayName, name, brand,photoURL , currentDate, details, _id, email} = query
+    const {title,  image, displayName, name, brand,photoURL , currentDate, details, _id, email} = query
     console.log(query)
     const queryId = _id
     const handleRecommendation = e =>{
@@ -38,7 +38,18 @@ const navigate = useNavigate()
         const recommendationName = form.name.value
         
         const recommendation = {recommendationImage, recommendationName, recommendationReason,recommendationTitle, queryId , title, displayName, photoURL,recommendationDate, email, recommenderEmail, recommenderName, name }
-        fetch('http://localhost:5000/recommendations', {
+        Swal.fire({
+            title: 'Are You Sure?',
+            text: 'Add recommendation',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Add',
+            confirmButtonColor: 'green',
+            cancelButtonText: 'Cancel',
+            
+        }).then((result)=>{
+            if(result.isConfirmed){
+                fetch('https://aultly-server.vercel.app/recommendations', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'
@@ -47,36 +58,26 @@ const navigate = useNavigate()
         })
         .then(res=> res.json())
         .then(()=>{
-            fetch(`http://localhost:5000/queryDetails/${_id}`, {
-                method: 'PUT',
-                headers: {
-                    "content-type" : "application/json"
-                },
-                body: JSON.stringify(query)
-            })
-            .then(res=> res.json())
-            .then(data=>{
-                console.log(data)
-                Swal.fire({
-                    title: 'Are You Sure?',
-                    text: 'Add recommendation',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Add',
-                    confirmButtonColor: 'green',
-                    cancelButtonText: 'Cancel',
-                    
-                }).then(()=>{
-                    window.location.reload()
-
+            console.log(query)
+            fetch(`https://aultly-server.vercel.app/queryDetails/increase/${queryId}`, {
+                    method: 'PUT',
+                    headers: {
+                        "content-type" : "application/json"
+                    },
+                    body: JSON.stringify(query)
                 })
-            })
+            // window.location.reload()
         })
+            }
+            
+
+        })
+        
     } 
     
     const [recommendations , setRecommendations] = useState([])
     useEffect(()=>{
-        fetch(`http://localhost:5000/recommendations/${queryId}`)
+        fetch(`https://aultly-server.vercel.app/recommendations/${queryId}`)
         .then(res=> res.json())
         .then(data =>{
             console.log(data)
@@ -105,7 +106,7 @@ const navigate = useNavigate()
                 <p className="opacity-70">Alternation Reason: {details}</p>
             </div>
 			<div className="">
-				<p>Recommendations: {recommendationCount}</p>
+				<p>Recommendations: {recommendations.length}</p>
 			</div>
 		</div>
 	</div>

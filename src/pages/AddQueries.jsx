@@ -23,7 +23,7 @@ console.log("date",currentDate);
         const title = form.title.value
         const query = {name, image, brand, details, title, displayName, email,  photoURL, recommendationCount: 0, time, currentDate}
         console.log(query)
-        fetch('http://localhost:5000/queries', {
+        fetch(`https://aultly-server.vercel.app/queries`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

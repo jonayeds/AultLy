@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import useAuth from "../custom hooks/useAuth";
-
+import Swal from "sweetalert2";
 const MyRecommendations = () => {
   const { auth } = useAuth();
   const [recommendations, setRecommendations] = useState([]);
   const user = auth.currentUser;
+  
   useEffect(() => {
     fetch(
-      `http://localhost:5000/recommendations/myRecommendations/${user?.email}`
+      `https://aultly-server.vercel.app/recommendations/myRecommendations/${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -15,15 +16,52 @@ const MyRecommendations = () => {
         setRecommendations(data);
       });
   }, [user]);
-  const handleDelete = (id)=>{
-    fetch(`http://localhost:5000/recommendations/myRecommendations/${id}`, {
-        method: 'DELETE'
+//   const [newRecommendations, setNewRecommendations] =useState([])
+const handleDelete = (rec)=>{
+    const id = rec._id
+    const queryId = rec.queryId
+    fetch(`https://aultly-server.vercel.app/queryDetails/${queryId}`)
+    .then(res => res.json())
+    .then(q=> {
+        
+        console.log(q)
+        // console.log(query)
+        
+        Swal.fire({
+            title: 'Are You Sure?',
+            text: 'Delete this item',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+            confirmButtonColor: 'red',
+            cancelButtonText: 'Cancel',
+        }).then(result=>{
+            if(result.isConfirmed){
+                fetch(`https://aultly-server.vercel.app/recommendations/${id}`, {
+                    method: 'DELETE'
+                })
+                .then(res=> res.json())
+                .then(()=>{
+                    // console.log(data)
+                    setRecommendations(recommendations?.filter((recommendation)=>recommendation._id != id))
+                    //   console.log(query)
+                    setTimeout(()=>{
+                        fetch(`https://aultly-server.vercel.app/queryDetails/decrease/${queryId}`, {
+                            method: 'PUT',
+                            headers: {
+                                "content-type" : "application/json"
+                            },
+                        body: JSON.stringify(q)
+                    })
+                    // console.log(q)
+                }, 2000)
+            })
+        }
     })
-    .then(res=> res.json())
-    .then(data=>{
-        console.log(data)
     })
-  }
+      
+}
+// console.log(newRecommendations)
   return (
     <div className="mt-16 text-center">
       <h1 className="text-4xl">
@@ -39,7 +77,7 @@ const MyRecommendations = () => {
 				<col />
 				<col />
 				
-				
+
 			</colgroup>
 			<thead className="text-center">
 				<tr className="">
@@ -65,7 +103,7 @@ const MyRecommendations = () => {
 					</td>
 					
 					<td className="p-3 ">
-						<button onClick={()=>handleDelete(recommendation._id)} className="btn bg-red-600  text-white">Delete</button>
+						<button onClick={()=>handleDelete(recommendation)} className="btn bg-red-600  text-white">Delete</button>
 					</td>
 				</tr>)
                 }
