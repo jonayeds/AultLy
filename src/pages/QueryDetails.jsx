@@ -7,6 +7,9 @@ const QueryDetails = () => {
     const recommender = auth.currentUser
     const recommenderName = recommender?.displayName
     const recommenderEmail = recommender?.email
+    // const recommenderImage = recommender?.PhotoURL
+    // console.log(recommenderImage)
+    // console.log(recommender.photoURL)
     // date
     
 	const date = new Date()
@@ -23,7 +26,7 @@ const navigate = useNavigate()
     
     // console.log(query)
     const {title,  image, displayName, name, brand,photoURL , currentDate, details, _id, email} = query
-    console.log(query)
+    // console.log(query)
     const queryId = _id
     const handleRecommendation = e =>{
         if(!recommender){
@@ -37,7 +40,8 @@ const navigate = useNavigate()
         const recommendationReason = form.details.value
         const recommendationName = form.name.value
         
-        const recommendation = {recommendationImage, recommendationName, recommendationReason,recommendationTitle, queryId , title, displayName, photoURL,recommendationDate, email, recommenderEmail, recommenderName, name }
+        const recommendation = {recommendationImage, recommendationName, recommendationReason,recommendationTitle, queryId , title, displayName, photoURL,recommendationDate, email, recommenderEmail, recommenderName, name, recommenderImage: recommender?.photoURL }
+        console.log('reco' , recommendation)
         Swal.fire({
             title: 'Are You Sure?',
             text: 'Add recommendation',
@@ -83,7 +87,7 @@ const navigate = useNavigate()
         fetch(`https://aultly-server.vercel.app/recommendations/${queryId}`)
         .then(res=> res.json())
         .then(data =>{
-            console.log(data)
+            // console.log(data)
             setRecommendations(data)
         })
     },[queryId])
