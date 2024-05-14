@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+
 import { FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ const Footer = () => {
     
 
     return (
-        <div className="bg-gray-800 text-white mt-32 pt-12">
+        <div className="bg-black text-gray-300 mt-32 pt-12">
             <footer className="px-4 divide-y ">
 	<div className="container lg:px-10 flex flex-col justify-around py-10 mx-auto space-y-8  lg:flex-row lg:space-y-0">
 		<div className="lg:w-1/3">

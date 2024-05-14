@@ -1,3 +1,4 @@
+import PopularQueries from "../Componenets/PopularQueries";
 import RecentQueries from "../Componenets/RecentQueries";
 import Slider from "../Componenets/Slider";
 
@@ -9,6 +10,7 @@ const Home = () => {
             
             <Slider></Slider>
             <RecentQueries></RecentQueries>
+            <PopularQueries></PopularQueries>
         </div>
     );
 };
