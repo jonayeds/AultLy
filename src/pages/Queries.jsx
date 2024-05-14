@@ -25,11 +25,12 @@ const Queries = () => {
         setCol(1)
     }else if(cols == 2){
         setCol(2)
-    }else if(cols == 3){
+      }else if(cols == 3){
         setCol(3)
+      }
     }
-}
-console.log(col)
+    // console.log(col)
+    console.log(allQueries)
   return (
     <div className="mt-20">
       <div>
@@ -64,7 +65,6 @@ console.log(col)
     
   </ul>
 </div>
-          
         
       </div>
       <div className={`grid grid-cols-1 md:grid-cols-${col} lg:grid-cols-${col} gap-8 mt-12`}>
