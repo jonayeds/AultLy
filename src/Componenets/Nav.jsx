@@ -37,8 +37,9 @@ const Nav = () => {
         const localTheme = localStorage.getItem('theme')
         document.querySelector('html').setAttribute('data-theme', localTheme)
     }, [theme])
+    //  user && console.log(`${user.photoURL}`)
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 mx-auto w-full container">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -80,16 +81,16 @@ const Nav = () => {
     
   >
   <Tooltip id="my-tooltip"   style={{ backgroundColor: "#7ba0ab", color: "white" }} className="font-bold z-50" />
-  <img src={user.photoURL} alt="" className="w-12 h-12 rounded-full border-green-500 border-[3px] border-solid" />
+  <img src={user?.photoURL} alt="" className="w-12 h-12 rounded-full border-green-500 border-[3px] border-solid" />
   </a>
-      <button onClick={handleLogOut} className="relative hidden md:flex  items-center justify-center py-2 px-7  overflow-hidden font-medium text-[#65a5ac] transition duration-300 ease-out border-2 border-[#7ba0ab] rounded-full shadow-md group">
+      <button onClick={handleLogOut} className="relative hidden lg:flex  items-center justify-center py-2 px-7  overflow-hidden font-medium text-[#65a5ac] transition duration-300 ease-out border-2 border-[#7ba0ab] rounded-full shadow-md group">
     <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-[#7ba0ab] group-hover:translate-x-0 ease">
     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path  d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
     </span>
     <span className="absolute flex items-center justify-center w-full h-full tp transition-all duration-300 transform group-hover:translate-x-full ease">Logout</span>
     <span className="relative invisible">Logout</span>
     </button>
-    </div> : <Link to={'/login'} href="#_" className="relative inline-flex items-center justify-center py-2 px-7  overflow-hidden font-medium text-[#65a5ac] transition duration-300 ease-out border-2 border-[#7ba0ab] rounded-full shadow-md group">
+    </div> : <Link to={'/login'}  className="relative inline-flex items-center justify-center py-2 px-7  overflow-hidden font-medium text-[#65a5ac] transition duration-300 ease-out border-2 border-[#7ba0ab] rounded-full shadow-md group">
 <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-[#7ba0ab] group-hover:translate-x-0 ease">
 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path  d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
 </span>

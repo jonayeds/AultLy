@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useauth from "../custom hooks/useAuth"
 import Swal from "sweetalert2";
 const SignUp = () => {
-    const {createUser, } = useauth()
+    const {createUser, update } = useauth()
     const [show, setShow] = useState(false)
 	const handleShow = ()=>{
 		setShow(!show)
@@ -21,7 +21,7 @@ const SignUp = () => {
         console.log(user)
         createUser(email, password)
         .then((result) => {
-			// update(name, photo)
+			update(name, photo)
 			// console.log(auth.currentUser)
 			Swal.fire({
 				title: 'Successful',
