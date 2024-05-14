@@ -12,10 +12,12 @@ import QueryDetails from "../pages/QueryDetails";
 import MyRecommendations from "../pages/MyRecommendations";
 import RecommendationsForMe from "../pages/RecommendationsForMe";
 import UpdateQuery from "../pages/UpdateQuery";
+import ErrorPage from "../pages/ErrorPage";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout></Layout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
