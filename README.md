@@ -1,7 +1,5 @@
 # AultLy
-
-https://aultly-335e4.web.app/
-
+[Live Demo](https://aultly-335e4.web.app/)
 
 
 ## Key features and characteristics
@@ -18,3 +16,15 @@ https://aultly-335e4.web.app/
 
 - React-fast-marquee
 - React-tooltip
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/jonayeds/AultLy.git
+
+2. Install dependencies:
+
+   ```bash
+   cd backpackers
+   npm install
