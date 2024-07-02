@@ -26,5 +26,5 @@
 2. Install dependencies:
 
    ```bash
-   cd backpackers
+   cd AultLy
    npm install
